@@ -61,7 +61,11 @@ public class TravelPlan {
     }
 
     public void writeToOutput(String file) throws IOException {
-        System.out.println(vehicles);
+//        System.out.println(vehicles);
+
+        System.out.println(vehicles.stream().mapToInt(v -> v.getRides()
+                .stream().mapToInt(r -> Lennart.calculateDistance(r)).sum()
+        ).sum());
 
         List<String> output = vehicles.stream().map(vehicle ->
                 vehicle.getRides().size() + " " +

@@ -10,10 +10,18 @@ public class Lennart {
         int shortest = Integer.MAX_VALUE;
         Ride best = null;
         for(Ride ride : ridesLeft) {
+            int distanceToRide = calculateDistance(vehicle, ride);
             int stepsToStart = calculateSteps(vehicle, ride);
-            if(stepsToStart < shortest) {
+
+            int score = stepsToStart;
+//            int score = optimizeForBonus ? stepsToStart + calculateDistance(ride) : stepsToStart;
+//            if(optimizeForBonus) {
+//                stepsToStart += calculateDistance(ride);
+//            }
+
+            if(score < shortest) {
                 int rideDistance = calculateDistance(ride);
-                if(vehicle.getTotalSteps() + stepsToStart + rideDistance > plan.getSteps())
+                if(vehicle.getTotalSteps() + stepsToStart + rideDistance > ride.getLatestFinish())
                     continue;
 
                 shortest = stepsToStart;

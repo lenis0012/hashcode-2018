@@ -26,5 +26,8 @@ public class Vehicle {
         totalSteps += (distanceToRide = Lennart.calculateDistance(this, ride));
         totalSteps += Lennart.calculateWaitTime(this, ride, distanceToRide);
         totalSteps += Lennart.calculateDistance(ride);
+
+        row = ride.getFinishRow();
+        col = ride.getFinishCol();
     }
 }

@@ -7,6 +7,10 @@ public class CarsApplication {
 
     public static void main(String[] args) throws Exception {
         solve("/a_example.in");
+        solve("/b_should_be_easy.in");
+        solve("/c_no_hurry.in");
+        solve("/d_metropolis.in");
+        solve("/e_high_bonus.in");
     }
 
     public static void solve(String file) throws Exception {
