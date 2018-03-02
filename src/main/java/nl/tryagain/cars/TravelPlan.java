@@ -63,9 +63,11 @@ public class TravelPlan {
     public void writeToOutput(String file) throws IOException {
         System.out.println(vehicles);
 
-        List<String> output = vehicles.stream().map(vehicle -> vehicle.getRides().stream()
-                .map(r -> Integer.toString(r.getId())).collect(Collectors.joining(" ")))
-                .collect(Collectors.toList());
+        List<String> output = vehicles.stream().map(vehicle ->
+                vehicle.getRides().size() + " " +
+                        vehicle.getRides().stream()
+                        .map(r -> Integer.toString(r.getId())).collect(Collectors.joining(" ")))
+                        .collect(Collectors.toList());
 
         Files.write(Paths.get(Paths.get(file).getFileName().toString()), output);
     }
