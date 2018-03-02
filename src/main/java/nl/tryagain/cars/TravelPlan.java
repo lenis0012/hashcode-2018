@@ -38,7 +38,7 @@ public class TravelPlan {
         int bonus = Integer.parseInt(header[4]);
         int steps = Integer.parseInt(header[5]);
 
-        // Read vehicles
+        // Read rides
         List<String> rideData = lines.subList(1, lines.size());
         List<Ride> rides = IntStream.range(0, rideCount).mapToObj(line -> {
             List<Integer> data = Arrays.stream(rideData.get(line).split(Pattern.quote(" ")))
