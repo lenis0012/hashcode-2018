@@ -3,6 +3,7 @@ package nl.tryagain.cars;
 import lombok.SneakyThrows;
 import lombok.Value;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -59,8 +60,13 @@ public class TravelPlan {
         return new TravelPlan(rows, cols, bonus, steps, rides, vehicles);
     }
 
-    public void writeToOutput(String file) {
+    public void writeToOutput(String file) throws IOException {
         System.out.println(vehicles);
-        // TODO: SAVE
+
+        List<String> output = vehicles.stream().map(vehicle -> vehicle.getRides().stream()
+                .map(r -> Integer.toString(r.getId())).collect(Collectors.joining(" ")))
+                .collect(Collectors.toList());
+
+        Files.write(Paths.get(Paths.get(file).getFileName().toString()), output);
     }
 }
