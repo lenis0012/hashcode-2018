@@ -43,6 +43,7 @@ public class TravelPlan {
             List<Integer> data = Arrays.stream(rideData.get(line).split(Pattern.quote(" ")))
                     .map(Integer::parseInt).collect(Collectors.toList());
             return new Ride(
+                    line,
                     data.get(0),
                     data.get(1),
                     data.get(2),
